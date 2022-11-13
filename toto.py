@@ -4,6 +4,8 @@ from selenium.webdriver.common.by import By
 import time
 import os
 import numpy as np
+import pandas as pd
+
 
 url='https://sport.toto.nl/wedden/sport/567/engeland-premier-league/wedstrijden'
 
@@ -23,22 +25,33 @@ cookies = driver.find_elements(By.XPATH, cookies)[0]
 cookies.click()
 
 
-time.sleep(np.random.normal(2))
+time.sleep(7)
 
-toon_meer_class="content-loader__load-more-link"
-toon_meer_button = driver.find_elements(By.CLASS_NAME, toon_meer_class)
+load="content-loader__load-more-link"
+load_button = driver.find_elements(By.CLASS_NAME, load)
 
-for button in toon_meer_button:
+for button in load_button:
+    time.sleep(10)
     button.click()
     
 #%%
 #load fixtures    
 
-time.sleep(np.random.normal(5))
+
 
 
 fixture="event-list__item-link-anchor"
+fixture="event-list__content"
+fixture="event-list__item-link-anchor"
+#fixture="event-card__icon event-card__icon--bet-builder"
+#fixture='"event-list__item event-list__item--soccer'
+fixture="event-list__item__event-market__market-count__link"
 fixture_list = driver.find_elements(By.CLASS_NAME, fixture)
 
 button0=fixture_list[0]
+
+time.sleep(5)
+
 button0.click()
+
+
